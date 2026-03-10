@@ -65,12 +65,12 @@ primes_300 = primes[1:300]
 inv_primes = 1.0 ./ primes_300
 
 
-n = 300               
+m = 300               
 phi1 = 0.5            
 phi2 = 0.3            
 sigma = 1.0           
 
-ar2 = zeros(n)
+ar2 = zeros(m)
 epsilon = sigma .* randn(n)
 
 
@@ -78,11 +78,17 @@ ar2[1] = epsilon[1]
 ar2[2] = phi1*ar2[1] + epsilon[2]
 
 
-for t in 3:n
+for t in 3:m
     ar2[t] = phi1*ar2[t-1] + phi2*ar2[t-2] + epsilon[t]
 end
 
-Y=primes_300[1:n]
+#Y=primes_300[1:n]
+
+Y=rand(-100:100,n)
+#Y=primes_300[rand(1:300,n)]
+#Y=primes_300[rand(1:300,n)]
+
+
 
 M[1,1]=1
 M[1,2]=-a_1
@@ -149,4 +155,5 @@ fa2_expr = eval(Meta.parse(fa2_str))
 F = System([fa1_expr,fa2_expr])
 
 resultcl2 = HomotopyContinuation.solve(F)
+
 

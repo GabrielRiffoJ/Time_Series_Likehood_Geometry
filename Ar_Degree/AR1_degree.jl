@@ -97,16 +97,5 @@ l1= tr(D1*Minvdet)*transpose(Y)*M*Y-n*transpose(Y)*D1*Y*deter
 
 f1=simplify(l1,expand=true)
 
-fa1 = string(f1)
-
-@var a0 a1 a2
-
-fa1_str = replace(fa1,"a_1" => "a1","a_2" => "a2")
-
-fa1_expr = eval(Meta.parse(fa1_str))
-
-F = System([fa1_expr,fa2_expr])
-
-resultcl2 = solve(F)
 
 

@@ -4,7 +4,7 @@ using LinearAlgebra
 
 @variables a_0 a_1 a_2
 
-# Crear una matriz de ceros de tamaño n x n
+
 M1 = zeros(Num, 2, 2)
 
 M1=[ a_0^2+a_1^2+a_2^2   a_0*a_1+a_1*a_2
@@ -20,21 +20,21 @@ M2=[ a_0^2+a_1^2+a_2^2   a_0*a_2
 
 
 
-@variables x y  # Definir variables simbólicas
-a0M1 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a0M1, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+@variables x y  
+a0M1 = Matrix{Num}(undef, 2, 2)  
+fill!(a0M1, 0)  
 
-a1M1 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a1M1, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+a1M1 = Matrix{Num}(undef, 2, 2)  
+fill!(a1M1, 0)  
 
-a2M1 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a2M1, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+a2M1 = Matrix{Num}(undef, 2, 2)  
+fill!(a2M1, 0)  
 
 
 
-# Crear la matriz pentadiagonal simétrica
-D = a_0^2 + a_1^2 + a_2^2   # Diagonal principal
-U1 = a_0 * a_1 + a_1 * a_2  # Primera diagonal 
+
+D = a_0^2 + a_1^2 + a_2^2   
+U1 = a_0 * a_1 + a_1 * a_2  
 
 
 a0M1[1,1] = 2*a_0
@@ -56,20 +56,20 @@ a2M1[1,2] = a_1
 a2M1[2,1] = a_1
 
 
-a0M2 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a0M2, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+a0M2 = Matrix{Num}(undef, 2, 2)  
+fill!(a0M2, 0) 
 
-a1M2 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a1M2, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+a1M2 = Matrix{Num}(undef, 2, 2)  
+fill!(a1M2, 0) 
 
-a2M2 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a2M2, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+a2M2 = Matrix{Num}(undef, 2, 2)  
+fill!(a2M2, 0)  
 
 
 
-# Crear la matriz pentadiagonal simétrica
-D = a_0^2 + a_1^2 + a_2^2   # Diagonal principal
-U2 = a_0 * a_2   # Primera diagonal 
+
+D = a_0^2 + a_1^2 + a_2^2   
+U2 = a_0 * a_2   
 
 
 a0M2[1,1] = 2*a_0
@@ -243,8 +243,7 @@ using LinearAlgebra
 function unique_vectors_tol(vectors; tol = 1e-8)
     uniques = Vector{eltype(vectors)}()
     for v in vectors
-        # mantener v solo si es suficientemente distinto de todos los anteriores
-        if all(norm(v - u) > tol for u in uniques)
+         if all(norm(v - u) > tol for u in uniques)
             push!(uniques, v)
         end
     end

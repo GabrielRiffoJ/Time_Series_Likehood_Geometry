@@ -846,7 +846,7 @@ sigma = 1.0
 Random.seed!(1234)
 
 ar6 = zeros(m)
-§epsilon = sigma .* randn(m)
+epsilon = sigma .* randn(m)
 
 ar6[1] = epsilon[1]
 ar6[2] = phi[1]*ar6[1] + epsilon[2]

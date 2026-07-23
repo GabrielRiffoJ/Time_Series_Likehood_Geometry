@@ -243,7 +243,7 @@ using LinearAlgebra
 function unique_vectors_tol(vectors; tol = 1e-8)
     uniques = Vector{eltype(vectors)}()
     for v in vectors
-        # mantener v solo si es suficientemente distinto de todos los anteriores
+ 
         if all(norm(v - u) > tol for u in uniques)
             push!(uniques, v)
         end

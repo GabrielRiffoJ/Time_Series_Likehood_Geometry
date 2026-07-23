@@ -26,6 +26,10 @@ Minvdet = Minv * deter
 
 Y = matrix{{y_1},{y_2},{y_3}}
 
+--Y = matrix{{y_1},{0},{y_3}}
+--Y = matrix{{y_1},{0},{-y_1}}
+--Y = matrix{{y_1},{y_2},{-y_1-2*y_2}}
+--Y = matrix{{y_1},{y_2},{-y_1+2*y_2}}
 
 l0 = trace(Minvdet * M0) * deter - transpose(Y) * Minvdet * M0 * Minvdet * Y
 l1 = trace(Minvdet * M1) * deter - transpose(Y) * Minvdet * M1 * Minvdet * Y
@@ -75,21 +79,39 @@ S= (frac QQ[y_1, y_2, y_3])[a_2, a_1, a_0, MonomialOrder => Lex]
 RJ2= substitute(RJ, S)
 GRJ2 = gens gb RJ2
 
+Y20=sub(RJ2,{y_2=>0})
+Y20G= gens gb Y20
+
+Y20Y13=sub(RJ2,{y_2=>0,y_3=>-y_1})
+
+
+
 GRJ2_0
 GRJ2_1
+GRJ2_2
+GRJ2_3
 GRJ2_4
+GRJ2_5
+GRJ2_6
+GRJ2_7
+GRJ2_8
 
+GRJ2_1
 
-S= (frac QQ[y_1, y_2, y_3])[a_0, a_1, a_2, MonomialOrder => Lex]
+SA2= (frac QQ[y_1, y_2, y_3])[a_0, a_1, a_2, MonomialOrder => Lex]
 
-RJ2= substitute(RJ, S)
-GRJ2 = gens gb RJ2
+RJA2= substitute(RJ, SA2)
+GRJA2 = gens gb RJA2
 
+SA0= (frac QQ[y_1, y_2, y_3])[a_2, a_1, a_0, MonomialOrder => Lex]
 
-S= (frac QQ[y_1, y_2, y_3])[a_1, a_2, a_0, MonomialOrder => Lex]
+RJA0= substitute(RJ, SA0)
+GRJA0 = gens gb RJA0
 
-RJ2= substitute(RJ, S)
-GRJ2 = gens gb RJ2
+SA1= (frac QQ[y_1, y_2, y_3])[a_2, a_0,a_1, MonomialOrder => Lex]
+
+RJA1= substitute(RJ, SA1)
+GRJA1 = gens gb RJA1
 
 --(4y_1^2-16y_2^2+8y_1y_3+4y_3^2)a_2^2+(-4y_1^2y_2^2+8y_2^4-4y_1^3y_3+16y_1y_2^2y_3-8y_1^2y_3^2-4y_2^2y_3^2-4y_1y_3^3)a_2-3y_1^2y_2^4+2y_1^3y_2^2y_3+2y_1y_2^4y_3+y_1^4y_3^2-4y_1^2y_2^2y_3^2-3y_2^4y_3^2+2y_1^3y_3^3+2y_1y_2^2y_3^3+y_1^2y_3^4 |
 
@@ -108,7 +130,16 @@ GRJ2 = gens gb RJ2
 --GRJ2_4
 --sub(GRJ2_4, {y_1=>2, y_2=>3, y_3=>7})
 
+SA2= frac((QQ[y_1, y_2, y_3]))[a_0, a_1, a_2, MonomialOrder => Lex]
 
+RJ2= substitute(RJ, SA2)
+GRJ2 = gens gb RJ2
+
+
+S3= frac((QQ[y_1, y_2, y_3])[a_1, a_2, a_0, MonomialOrder => Lex])
+
+RJ2= substitute(RJ, S)
+GRJ2 = gens gb RJ2
 
 --Result A2 
 
@@ -135,6 +166,7 @@ C0=-3*y_1^2*y_2^4-8*y_2^6+2*y_1^3*y_2^2*y_3+2*y_1*y_2^4*y_3+y_1^4*y_3^2+4*y_1^2*
 discriminantA0=B0^2 - 4*A0*C0
 
 (-B0-sqrt(discriminantA0))/(2*A0)
+-B0/(2*A0)
 
 --Result A1
 (2y_1^2-8y_2^2+4y_1y_3+2y_3^2)a_1^2+(-2y_1^3y_2+6y_1y_2^3-4y_1^2y_2y_3+6y_2^3y_3-4y_1y_2y_3^2-2y_2y_3^3)a_1-y_1^2y_2^4+y_1^3y_2^2y_3-2y_1y_2^4y_3+2y_1^2y_2^2y_3^2-y_2^4y_3^2+y_1y_2^2y_3^3 |
@@ -144,6 +176,7 @@ B1=-2*y_1^3*y_2+6*y_1*y_2^3-4*y_1^2*y_2*y_3+6*y_2^3*y_3-4*y_1*y_2*y_3^2-2*y_2*y_
 C1=-y_1^2*y_2^4+y_1^3*y_2^2*y_3-2*y_1*y_2^4*y_3+2*y_1^2*y_2^2*y_3^2-y_2^4*y_3^2+y_1*y_2^2*y_3^3 
 
 discriminantA1=B1^2 - 4*A1*C1
+-B1/(2*A1)
 ---Result A2
 
 (4y_1^2-16y_2^2+8y_1y_3+4y_3^2)a_2^2+(-4y_1^2y_2^2+8y_2^4-4y_1^3y_3+16y_1y_2^2y_3-8y_1^2y_3^2-4y_2^2y_3^2-4y_1y_3^3)a_2-3y_1^2y_2^4+2y_1^3y_2^2y_3+2y_1y_2^4y_3+y_1^4y_3^2-4y_1^2y_2^2y_3^2-3y_2^4y_3^2+2y_1^3y_3^3+2y_1y_2^2y_3^3+y_1^2y_3^4 
@@ -154,6 +187,7 @@ C2=-3*y_1^2*y_2^4+2*y_1^3*y_2^2*y_3+2*y_1*y_2^4*y_3+y_1^4*y_3^2-4*y_1^2*y_2^2*y_
 
 discriminantA2=B2^2 - 4*A2*C2
 
+a
 
 
 

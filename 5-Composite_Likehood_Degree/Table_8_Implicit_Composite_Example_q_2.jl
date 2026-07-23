@@ -20,15 +20,15 @@ M2=[ a_0   a_2
 
 
 
-@variables x y  # Definir variables simbólicas
-a0M1 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a0M1, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+@variables x y  
+a0M1 = Matrix{Num}(undef, 2, 2)  
+fill!(a0M1, 0)  
 
-a1M1 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a1M1, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+a1M1 = Matrix{Num}(undef, 2, 2)  
+fill!(a1M1, 0) 
 
-a2M1 = Matrix{Num}(undef, 2, 2)  # Crear una matriz 3x3 con elementos de tipo `Num`
-fill!(a2M1, 0)  # Llenarla con ceros (o con otro valor inicial si prefieres)
+a2M1 = Matrix{Num}(undef, 2, 2)  
+fill!(a2M1, 0) 
 
 
 

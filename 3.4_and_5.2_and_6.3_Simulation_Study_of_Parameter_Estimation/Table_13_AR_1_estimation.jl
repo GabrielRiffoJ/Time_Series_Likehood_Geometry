@@ -7,10 +7,10 @@ using LinearAlgebra
 @variables a_1
 
 n=12
-# Crear una matriz de ceros de tamaño n x n
+
 M = zeros(Num, n, n)
 
-# Llenar la diagonal principal
+
 for i in 1:n
     M[i, i] = a_1^2+1
 end
@@ -34,10 +34,10 @@ end
 
 
 
-# Crear una matriz de ceros de tamaño n x n
+
 Minv = zeros(Num, n, n)
     
-# Llenar la diagonal principal
+
 for h in 0:(n-1)
     for i in 1:(n-h)
         Minv[i+h, i] = a_1^(h)/(1-a_1^2)

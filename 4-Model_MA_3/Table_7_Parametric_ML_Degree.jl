@@ -2,6 +2,7 @@ using HomotopyContinuation
 using Symbolics
 @variables a_0 a_1 a_2 a_3
 using Pkg
+using Distributions
 
 Pkg.add("Primes")
 using Primes

@@ -1,6 +1,7 @@
 using HomotopyContinuation
 using Symbolics
 using LinearAlgebra
+using Distributions
 
 @variables g_0 g_1 g_2 g_3 g_4 g_5 g_6
 

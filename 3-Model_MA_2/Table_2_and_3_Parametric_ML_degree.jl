@@ -1,3 +1,4 @@
+using Distributions
 using HomotopyContinuation
 using Symbolics
 @variables a_0 a_1 a_2

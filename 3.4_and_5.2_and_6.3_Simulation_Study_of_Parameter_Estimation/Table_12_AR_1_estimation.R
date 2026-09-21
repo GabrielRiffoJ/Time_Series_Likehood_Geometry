@@ -1,15 +1,10 @@
 
-1+0.5^2+0.3^2
-0.5-0.5*0.3
--0.3
-
 
 muestras=c()
-for (i  in c(1:500)){
-  arma_sim <- arima.sim(n = 15, model = list(ar = c(0.5, -0.3)))
+for (i in c(1:500)){
+  arma_sim <- arima.sim(n = 15, model = list(ar = 0.5))
   muestras=rbind(muestras,arma_sim)
-  }
-
+}
 
 
 resultado=c()

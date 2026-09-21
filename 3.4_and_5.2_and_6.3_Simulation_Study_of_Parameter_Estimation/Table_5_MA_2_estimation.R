@@ -1,24 +1,15 @@
-
-1+0.5^2+0.3^2
-0.5-0.5*0.3
--0.3
-sqrt(1+0.5^2+0.3^2)
-help(arima.sim)
-
+set.seed(1234)
 muestras=c()
-for (i  in c(1:500)){
-  arma_sim <- arima.sim(n = 10, model = list(ma = c(0.5, -0.3)),sd=1.157)
+for (i in c(1:500)){
+  arma_sim <- arima.sim(n = 10, model = list(ma = c(0.5, -0.3)))
   muestras=rbind(muestras,arma_sim)
-  }
-
-
+}
 
 resultado=c()
 
 for (i in c(1:500) ){
   Y=muestras[i,]
   n=length(Y)
-
 
   fobj<-function(par){
     a0=par[1]
@@ -38,7 +29,6 @@ for (i in c(1:500) ){
 
   re=optim(c(sd(Y),0,0),fobj)
 
-
   a0=re$par[1]
   a1=re$par[2]
   a2=re$par[3]
@@ -46,44 +36,12 @@ for (i in c(1:500) ){
   resultado=rbind(resultado,c(a0,a1,a2))
 }
 
-resultado[1,]
-
 colMeans(resultado)
 colMeans(resultado)-c(1,0.5,-0.3)
 
 sd(resultado[,1])
 sd(resultado[,2])
 sd(resultado[,3])
-mean(resultado[,1]-1)
-mean(resultado[,2]-0.5)
-mean(resultado[,3]+0.3)
 
-sum((resultado[9,]-c(1,0.5,-0.3))^2)
-
-
-
-
-
-
-
-#save samples for HomotopyContinuation
-
-write.table(muestras, file = "samples.txt", row.names = FALSE, col.names = TRUE, sep = "\t")
-
-
-
-
-a0
-a1
-a2
-
-sum(abs(c(a0-1,a1-0.5, a2+0.3)))
-
-a0^2+a1^2+a2^2
-a0*a1+a1*a2
-a0*a2
-
-
-
-
+write.table(muestras, file = "samples_MA2.txt", row.names = FALSE, col.names = TRUE, sep = "\t")
 

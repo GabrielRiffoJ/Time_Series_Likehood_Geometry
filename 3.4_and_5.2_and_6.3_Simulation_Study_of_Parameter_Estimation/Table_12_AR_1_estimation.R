@@ -6,7 +6,7 @@
 
 muestras=c()
 for (i  in c(1:500)){
-  arma_sim <- arima.sim(n = 10, model = list(ar = c(0.5, -0.3)))
+  arma_sim <- arima.sim(n = 15, model = list(ar = c(0.5, -0.3)))
   muestras=rbind(muestras,arma_sim)
   }
 

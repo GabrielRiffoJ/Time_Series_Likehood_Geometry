@@ -23,7 +23,6 @@ Pkg.add(url="https://github.com/tbrysiewicz/Pandora")   # Figures 1-3 only
 ```
 
 `LinearAlgebra`, `Random`, `Statistics` and `DelimitedFiles` are part of the Julia standard library.
-[TODO: add `Project.toml` and `Manifest.toml` with the exact versions used, and mention them here.]
 
 **R** (>= 4.0), base only (`arima.sim`, `optim`).
 
@@ -35,7 +34,7 @@ Pkg.add(url="https://github.com/tbrysiewicz/Pandora")   # Figures 1-3 only
 
 All ML and composite likelihood degrees are computed with [`HomotopyContinuation.jl`](https://www.juliahomotopycontinuation.org/) by tracking the solutions of the score equations. The running time grows by orders of magnitude with the sample size `n` (MA models) and the order `q` (composite likelihood). The smallest cases take seconds to minutes on a laptop; the largest take hours. Entries marked `-` in Tables 7 and 8 did not finish within 24 hours, and the value 1220 in Table 7 (`n = 5`) is a lower bound because that run was stopped.
 
-The solution counts are computational results. Homotopy continuation does not by itself guarantee that all solutions were found, so the largest entries should be read as computed values, not proofs. [TODO: list which entries were computed more than once and which only once, e.g. MA(2) with `n = 9, 10` and MA(3).] For AR(*p*) the counts were verified with `certify`.
+The solution counts are computational results. Homotopy continuation does not by itself guarantee that all solutions were found, so the largest entries should be read as computed values, not proofs. For AR(*p*) the counts were verified with `certify`.
 
 Scripts are not driven by a loop over the whole table. **One line near the top of each script selects the entry** (for example `n = 3` for the sample size, or `q = 2` for the order). Change that line to compute another column, for example
 
